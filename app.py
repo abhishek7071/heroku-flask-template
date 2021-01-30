@@ -119,7 +119,7 @@ def home():
      	
      	
      	link10= "https://pharmeasy.in/search/all?name="+medicine_name
-     	p=r.get(link2)
+     	p=r.get(link10)
      	soup = BeautifulSoup(p.text, 'html.parser')
      	for i in soup.find_all("div" , {"class":"GvJNB"}):
      	    link = i.find('a',href=True)
