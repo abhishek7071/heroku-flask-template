@@ -30,7 +30,7 @@ def home():
      	time.sleep(2)
      	page_source = driver.page_source
      	driver.quit()
-     	soup = bs(page_source, 'lxml')
+     	soup = bs(page_source, 'html.parser')
      	for i in soup.find_all('div',{'class':'drug_list'}):
      	  j=soup.find("div",attrs = {'class':'cart_btn'}).text
      	  if j is None:
