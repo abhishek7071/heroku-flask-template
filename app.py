@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import os
+Link=""
 
 app = Flask(__name__)
 global stock3
