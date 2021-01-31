@@ -45,7 +45,7 @@ def home():
      	else:
      	  stock=soup.find("div",attrs = {'class':'cart_btn'}).text
      	  price=soup.find("span",attrs = {'class':'final-price'}).text
-     	  Mt=soup.find("div",attrs = {'class':'info'}).text
+     	  mt=soup.find("div",attrs = {'class':'info'}).text
      			
      			
      	link3="https://www.practo.com/medicine-info/search?drug="+medicine_name 
