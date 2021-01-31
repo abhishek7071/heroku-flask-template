@@ -8,3 +8,6 @@ Werkzeug
 requests
 bs4
 selenium
+pytest-shutil
+Pillow
+flask_mysqldb
