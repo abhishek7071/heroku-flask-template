@@ -9,7 +9,6 @@ from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import os
-Link=""
 
 app = Flask(__name__)
 global stock3
@@ -31,7 +30,7 @@ def home():
      	time.sleep(2)
      	page_source = driver.page_source
      	driver.quit()
-     	soup = bs(page_source, 'html.parser')
+     	soup = bs(page_source, 'lxml')
      	for i in soup.find_all('div',{'class':'drug_list'}):
      	  j=soup.find("div",attrs = {'class':'cart_btn'}).text
      	  if j is None:
@@ -60,6 +59,7 @@ def home():
      		break
      	else:
      		link1="N/A"
+     	print(link1)
      	if link1=="N/A":
      		print("N/A")
      	else:
