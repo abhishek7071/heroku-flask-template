@@ -55,7 +55,7 @@ def home():
      		link = i.find('a',href=True)
      		if link is None:
      			continue
-     		link4 = link['href']
+     		link1 = link['href']
      		break
      	else:
      		link1="N/A"
