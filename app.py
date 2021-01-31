@@ -9,49 +9,43 @@ from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import os
-chrome_options = Options()
-options = Options()
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
-gmail_id="aman765180@gmail.com"
+
 app = Flask(__name__)
 global stock3
 @app.route("/", methods=['GET','POST'])
 def home():
      if request.method == 'POST':
      	medicine_name= request.form.get('medicine_name')
-     	link="https://www.1mg.com/search/all?filter=true&name="+medicine_name
-     	html_page = r.get(link)
-     	soup = BeautifulSoup(html_page.content,"html.parser")
-     	for i in soup.find_all('div',{'class':['style__horizontal-card___1Zwmt','style__product-box___3oEU6']}):
-     		link = i.find('a',href=True)
-     		if link is None:
-     			continue
-     		link1 = link['href']
-     		break
+     	link="https://m.netmeds.com/catalogsearch/result?q="+medicine_name
+     	chrome_options = Options()
+     	options = Options()
+     	chrome_options = webdriver.ChromeOptions()
+     	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+     	chrome_options.add_argument("--headless")
+     	chrome_options.add_argument("--disable-dev-shm-usage")
+     	chrome_options.add_argument("--no-sandbox")
+     	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
+     	driver.get(link)
+     	elm = driver.find_element_by_tag_name('html')
+     	time.sleep(2)
+     	page_source = driver.page_source
+     	driver.quit()
+     	soup = bs(page_source, 'lxml')
+     	for i in soup.find_all('div',{'class':'drug_list'}):
+     	  j=soup.find("div",attrs = {'class':'cart_btn'}).text
+     	  if j is None:
+     	    continue
+     	  print(j)
+     	  break
      	else:
-     		link1="N/A" 
-     	if link1=="N/A":
-     		price="N/A"
+     	  j="Y"
+     	print(j)
+     	if j=="Y":
+     	  price="N"
      	else:
-     		url1= "https://www.1mg.com"+link1
-     		page1 = r.get(url1)
-     		soup = bs(page1.content, "html.parser")
-     		price=soup.find("span" , {"class": "l3Regular"}).text
-     		link="https://www.1mg.com/search/all?filter=true&name="+medicine_name
-     		html_page = r.get(link)
-     		soup = BeautifulSoup(html_page.content,"html.parser")
-     		quantity=soup.find(["div","span"] , {"class":[ "style__pack-size___3jScl","style__pack-size___254Cd"]}).text
-     		title=soup.find(["div","span"] , {"class": ["style__pro-title___3G3rr","style__pro-title___3zxNC"]}).text
-     		stock=soup.find("div" , {"class": "style__interaction___3cb12"}).text
-     		if stock=="ADD":
-     			a="available"
-     		else:
-     			a="N/A"
+     	  stock=soup.find("div",attrs = {'class':'cart_btn'}).text
+     	  price=soup.find("span",attrs = {'class':'final-price'}).text
+     	  Mt=soup.find("div",attrs = {'class':'info'}).text
      			
      			
      	link3="https://www.practo.com/medicine-info/search?drug="+medicine_name 
@@ -162,7 +156,7 @@ def home():
      	  title1= soup.find('h1',{'class':'ooufh'}).text
      	  quantity1= soup.find('div',{'class':'_36aef'}).text
      	  price1=soup1.find("div" , {"class":"_1_yM9"}).text
-     	  return render_template("flask_weather_app.html",quantity=quantity,title=title,a=a,title1=title1,price1=price1,url3=url3,quantity3=quantity3,p=stock5,link=link3,stock=stock,link5=link5,price=price,quantity1=quantity1,price3=price3,link6=link6,price4=price4,quantity4=quantity4,stock3=stock3,title4=title4)
+     	  return render_template("flask_weather_app.html",quantity=mt,title=mt,a=a,title1=title1,price1=price1,url3=url3,quantity3=quantity3,p=stock5,link=link3,stock=stock,link5=link5,price=price,quantity1=quantity1,price3=price3,link6=link6,price4=price4,quantity4=quantity4,stock3=stock3,title4=title4)
      return render_template("flask_weather_app.html")
 if __name__ == '__main__':
   app.run(debug=True)
