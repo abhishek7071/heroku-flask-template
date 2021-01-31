@@ -8,7 +8,7 @@ import requests as r
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-#import os
+import os
 chrome_options = Options()
 options = Options()
 chrome_options = webdriver.ChromeOptions()
