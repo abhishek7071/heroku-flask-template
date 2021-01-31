@@ -79,7 +79,7 @@ def home():
      		else:
      			price3="price_not_availble"
      		print(price3)
-     		link5="https://www.practo.com"+str(link4)
+     		link5="https://www.practo.com"+str(link1)
      	link3="https://www.zoylo.com/medicines/catalogsearch/result/?q="+medicine_name
      	html_page = r.get(link3)
      	soup = BeautifulSoup(html_page.content,"html.parser")
