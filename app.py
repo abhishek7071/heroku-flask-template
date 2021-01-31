@@ -157,7 +157,7 @@ def home():
      	  title1= soup.find('h1',{'class':'ooufh'}).text
      	  quantity1= soup.find('div',{'class':'_36aef'}).text
      	  price1=soup1.find("div" , {"class":"_1_yM9"}).text
-     	  return render_template("flask_weather_app.html",quantity=mt,title=mt,a=a,title1=title1,price1=price1,url3=url3,quantity3=quantity3,p=stock5,link=link3,stock=stock,link5=link5,price=price,quantity1=quantity1,price3=price3,link6=link6,price4=price4,quantity4=quantity4,stock3=stock3,title4=title4)
+     	  return render_template("flask_weather_app.html",quantity=mt,title1=title1,price1=price1,url3=url3,quantity3=quantity3,p=stock5,link=link3,stock=stock,link5=link5,price=price,quantity1=quantity1,price3=price3,link6=link6,price4=price4,quantity4=quantity4,stock3=stock3,title4=title4)
      return render_template("flask_weather_app.html")
 if __name__ == '__main__':
   app.run(debug=True)
