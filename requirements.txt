@@ -7,3 +7,4 @@ peewee
 Werkzeug
 requests
 bs4
+selenium
