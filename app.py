@@ -32,7 +32,7 @@ def home():
      	driver.quit()
      	soup = bs(page_source, 'html.parser')
      	for i in soup.find_all('div',{'class':'drug_list'}):
-     	  j=soup.find("div",attrs = {'class':'cart_btn'}).text
+     	  j=soup.find("div",attrs = {'class':'info'}).text
      	  if j is None:
      	    continue
      	  print(j)
