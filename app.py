@@ -43,7 +43,7 @@ def home():
      	if j=="Y":
      	  price="N"
      	else:
-     	  stock=soup.find("div",attrs = {'class':'cart_btn'}).text
+     	  stock="Available"
      	  price=soup.find("span",attrs = {'class':'final-price'}).text
      	  mt=soup.find("div",attrs = {'class':'info'}).text
      			
