@@ -80,49 +80,49 @@ def home():
      			price3="price_not_availble"
      		print(price3)
      		link5="https://www.practo.com"+str(link1)
-     	link3="https://www.zoylo.com/medicines/catalogsearch/result/?q="+medicine_name
-     	html_page = r.get(link3)
-     	soup = BeautifulSoup(html_page.content,"html.parser")
+     	#link3="https://www.zoylo.com/medicines/catalogsearch/result/?q="+medicine_name
+     	#html_page = r.get(link3)
+     	#soup = BeautifulSoup(html_page.content,"html.parser")
      	s=soup.find(['div','span'], {'class':['message notice','price']}).text
-     	s=s[2:3]
-     	print(s)
-     	if s=="Y":
-     		link6="N/A"
-     		price4="N/A"
-     		stock3="N/A"
-     		quantity4="N/A"
-     		title4=""
-     	else:
-     		 for i in soup.find_all("div" ,{"class":"product details product-item-details"}):
-     		 	link = i.find('a',href=True)
-     		 	if link is None:
-     		 		continue
-     		 	link6=link['href']
-     		 	break
-     		 else:
-     		 	link6=link3
-     		 price4=soup.find("span" , {"class": "price"}).text
-     		 print(price4)
-     		 html_page = r.get(link6)
-     		 soup = bs(html_page.content,"html.parser")
-     		 for i in soup.find_all("div" ,{"class":"col-md-12 section-three"}):
-     		 	link=i.find("button" ,{"class":"action primary tocart"})
-     		 	if link is None:
-     		 		continue
-     		 	link=link.text
-     		 	link=link[1:2]
-     		 	print(link)
-     		 	break
-     		 if link=='A':
-     		 	stock3="Medicine_available"
-     		 else:
-     		 	stock3="not_available"
-     		 if stock3=="not_available":
-     		 	quantity4=""
-     		 	title4=""
-     		 else:
-     		 	quantity4=soup.find("div" ,{"class":"col-lg-8 pack-size"}).text
-     		 	title4=soup.find("div" ,{"class":"pro-name"}).text
+     	#s=s[2:3]
+     	#print(s)
+     	#if s=="Y":
+     		#link6="N/A"
+     		#price4="N/A"
+     		#stock3="N/A"
+     		#quantity4="N/A"
+     		#title4=""
+     	#else:
+     		# for i in soup.find_all("div" ,{"class":"product details product-item-details"}):
+     		 #	link = i.find('a',href=True)
+     		 #	if link is None:
+     		# 		continue
+     		 #	link6=link['href']
+     		# 	break
+     		# else:
+     		 #	link6=link3
+     		 #price4=soup.find("span" , {"class": "price"}).text
+     		# print(price4)
+     		 #html_page = r.get(link6)
+     		 #soup = bs(html_page.content,"html.parser")
+     		 #for i in soup.find_all("div" ,{"class":"col-md-12 section-three"}):
+     		 #	link=i.find("button" ,{"class":"action primary tocart"})
+     		 #	if link is None:
+     		 #		continue
+     		 #	link=link.text
+     		 #	link=link[1:2]
+     		 #	print(link)
+     		 #	break
+     		# if link=='A':
+     		 #	stock3="Medicine_available"
+     		 #else:
+     		 #	stock3="not_available"
+     		 #if stock3=="not_available":
+     		 #	quantity4=""
+     		 #	title4=""
+     		 #else:
+     		 #	quantity4=soup.find("div" ,{"class":"col-lg-8 pack-size"}).text
+     		 #	title4=soup.find("div" ,{"class":"pro-name"}).text
      	
      	
      	link10= "https://pharmeasy.in/search/all?name="+medicine_name
@@ -157,7 +157,7 @@ def home():
      	  title1= soup.find('h1',{'class':'ooufh'}).text
      	  quantity1= soup.find('div',{'class':'_36aef'}).text
      	  price1=soup1.find("div" , {"class":"_1_yM9"}).text
-     	  return render_template("flask_weather_app.html",title=mt,quantity=mt,title1=title1,price1=price1,url3=url3,quantity3=quantity3,p=stock5,link=link3,stock=stock,link5=link5,price=price,quantity1=quantity1,price3=price3,link6=link6,price4=price4,quantity4=quantity4,stock3=stock3,title4=title4)
+     	  return render_template("flask_weather_app.html",title=mt,quantity=mt,title1=title1,price1=price1,url3=url3,quantity3=quantity3,p=stock5,link=link3,stock=stock,link5=link5,price=price,quantity1=quantity1,price3=price3)
      return render_template("flask_weather_app.html")
 if __name__ == '__main__':
   app.run(debug=True)
